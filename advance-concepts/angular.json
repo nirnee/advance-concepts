@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "advance-concepts": {
+    "assesment": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -28,8 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss",
-              "./node_modules/bootstrap/scss/bootstrap.scss"
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "advance-concepts:build:production"
+              "browserTarget": "assesment:build:production"
             },
             "development": {
-              "browserTarget": "advance-concepts:build:development"
+              "browserTarget": "assesment:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "advance-concepts:build"
+            "browserTarget": "assesment:build"
           }
         },
         "test": {
@@ -97,6 +97,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -106,6 +107,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "71b7e3e6-7eed-4d1e-8808-d5b42ece0621"
   }
 }
