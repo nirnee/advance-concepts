@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6 col-xl-6 col-xxl-6">
+            <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Welcome to login</h3>
+                <form [formGroup]="loginForm">
+
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form3Example97" class="form-control form-control-lg"
+                            formControlName='name' />
+                        <label class="form-label" for="form3Example97">User Name</label>
+                    </div>
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form3Example97" class="form-control form-control-lg"
+                            formControlName='password' />
+                        <label class="form-label" for="form3Example97">Password</label>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center border-top-0 row">
+                        <div>
+                            <button type="button"
+                                class=" col-md-3 col-xl-3 col-lg-3 col-sm-3 float-start btn btn-light btn-lg">
+                                <a routerLink="/auth/signup">Signup</a>
+                            </button>
+                            <button type="button" (click)="submit()"
+                                class=" col-md-3 col-xl-3 col-lg-3 col-sm-3 float-end btn btn-warning btn-lg text-body">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6 col-xl-6 col-xxl-6 p-5">
+            <img src="./assets/images/signup.webp" alt="Sample photo" class="img-fluid"
+                style="height:78vh; width:100%; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+        </div>
+    </div>
+</div>

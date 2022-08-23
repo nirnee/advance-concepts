@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6 col-xl-6 col-xxl-6 p-5">
+            <img src="./assets/images/signup.webp" alt="Sample photo" class="img-fluid"
+                style="height:78vh; width:100%; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6 col-xl-6 col-xxl-6">
+            <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Welcome to signup</h3>
+                <form [formGroup]="signUpForm">
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="text" id="form3Example1m" class="form-control form-control-lg"
+                                    formControlName='firstName' />
+                                <label class="form-label" for="form3Example1m">First name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="text" id="form3Example1n" class="form-control form-control-lg"
+                                    formControlName='lastName' />
+                                <label class="form-label" for="form3Example1n">Last name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="text" id="form3Example97" class="form-control form-control-lg"
+                            formControlName='email' />
+                        <label class="form-label" for="form3Example97">Email ID</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="password" id="form3Example1m" class="form-control form-control-lg"
+                                    formControlName='password' />
+                                <label class="form-label" for="form3Example1m">Password</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="password" id="form3Example1n" class="form-control form-control-lg"
+                                    formControlName='cpassword' />
+                                <label class="form-label" for="form3Example1n">Confirm Password</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center border-top-0 row">
+                        <div>
+                            <button type="button"
+                                class=" col-md-3 col-xl-3 col-lg-3 col-sm-3 float-start btn btn-light btn-lg">
+                                <a routerLink="/auth/login">Login</a>
+                            </button>
+                            <button type="button" (click)="submit()"
+                                class=" col-md-3 col-xl-3 col-lg-3 col-sm-3 float-end btn btn-warning btn-lg text-body">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
