@@ -10,6 +10,7 @@ export class BotListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('yes')
   }
 
 }

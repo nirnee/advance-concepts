@@ -1,26 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
+import apis from 'src/app/shared/configs/apis';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+   
+    userData: any = null;
 
-   constructor( 
-        private http: HttpClient
-    ) { }
+    constructor( 
+        private http: HttpClient,
+        private router: Router
+    ) {
+        this.userData = localStorage.getItem('userData') || "{}";
+        this.userData = JSON.parse(this.userData);
+     }
 
-    userSignup(data: any): boolean {
-        this.http.post('https://ai-lab-backend.herokuapp.com/api/v1/auth/signup', data)
-        .subscribe({
-            next:(response)=>{
-                return true;
-            },
-            error:(error)=>{
-                return false;
-            }
-        });
-        return false;
+    userSignup(data: any): any {
+        return this.http.post(apis.auth.signup, data);
     }
 
     setUserInfo(data: any) {
@@ -29,14 +29,18 @@ export class AuthService {
     }
 
      userLogin(data: any): any {
-        this.http.post('https://ai-lab-backend.herokuapp.com/api/v1/auth/login', data)
-        .subscribe({
-            next:(response)=>{
+        return this.http.post(apis.auth.login, data).pipe(
+            tap((response: any)=>{
                 localStorage.setItem('userData',JSON.stringify(response));
-            },
-            error:(error)=>{
-                console.log(error);
-            }
-        });
+                this.userData = response;
+               // this.router.navigateByUrl('/admin')
+            })
+        )      
+    }
+
+    logout(){
+        this.userData = {};
+        localStorage.setItem("userData", "{}");
+        this.router.navigateByUrl('auth');
     }
 }

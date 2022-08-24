@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormBuilder, FormControl, Validators } from "@angular/forms";
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -19,13 +19,13 @@ export class LoginComponent implements OnInit {
   }
 
   //lofin form
-  loginForm = new FormGroup({
-    name: new FormControl(),
-    password: new FormControl()
+  loginForm = this.formBuilder.group({
+    name: new FormControl('', Validators.compose([Validators.required, Validators.minLength(4)])),
+    password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(4)]))
   });
 
-  isLoggedIn : boolean = false;
-  validComment: boolean= true;
+  isError : boolean = false;
+  errorMessage: string = '';
 
   ngOnInit(): void {
     //comment here
@@ -38,19 +38,19 @@ export class LoginComponent implements OnInit {
         username: this.loginForm.controls['name'].value,
         password: this.loginForm.controls['password'].value
       }
-      this.authService.userLogin(data);
-      let isUserLoggedIn = localStorage.getItem('userData');     
-      if(isUserLoggedIn != null) {
-        this.router.navigateByUrl('/dashboard');
-      }
-    } else {
-      //if form is not valid show error message
-      this.validComment = false;
-    }
-  }
+      this.authService.userLogin(data).subscribe({
+            next:(response: any)=>{
+              this.router.navigate(['admin']).then(() => {
+                window.location.reload();
+              });
 
-  //signup
-  signup(){
-    this.router.navigateByUrl('/signup');
+            },
+            error:(error : any)=>{
+                //if credentials are not valid show error message
+                this.isError = true;
+                this.errorMessage =  error;
+            }
+        });
+    }
   }
 }

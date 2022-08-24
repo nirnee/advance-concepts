@@ -9,12 +9,18 @@
                     <div class="form-outline mb-4">
                         <input type="text" id="form3Example97" class="form-control form-control-lg"
                             formControlName='name' />
-                        <label class="form-label" for="form3Example97">User Name</label>
+                        <label class="form-label" for="form3Example97">User Name</label><br>
+                        <span class="text-danger"
+                            *ngIf="loginForm.controls.name.invalid && loginForm.controls.name.dirty">Please enter valid
+                            email.</span>
                     </div>
                     <div class="form-outline mb-4">
-                        <input type="text" id="form3Example97" class="form-control form-control-lg"
+                        <input type="password" id="form3Example97" class="form-control form-control-lg"
                             formControlName='password' />
-                        <label class="form-label" for="form3Example97">Password</label>
+                        <label class="form-label" for="form3Example97">Password</label><br>
+                        <span class="text-danger"
+                            *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.dirty">Password
+                            should contain atleast 4 characters.</span>
                     </div>
                     <div class="modal-footer d-flex justify-content-center border-top-0 row">
                         <div>
@@ -22,18 +28,20 @@
                                 class=" col-md-3 col-xl-3 col-lg-3 col-sm-3 float-start btn btn-light btn-lg">
                                 <a routerLink="/auth/signup">Signup</a>
                             </button>
-                            <button type="button" (click)="submit()"
+                            <button type="button" (click)="submit()" [disabled]="!loginForm.valid"
                                 class=" col-md-3 col-xl-3 col-lg-3 col-sm-3 float-end btn btn-warning btn-lg text-body">
                                 Submit
                             </button>
                         </div>
+                        <span class="text-danger" *ngIf="isError">{{errorMessage}}</span>
                     </div>
+
                 </form>
 
             </div>
         </div>
         <div class="col-xs-6 col-md-6 col-lg-6 col-sm-6 col-xl-6 col-xxl-6 p-5">
-            <img src="./assets/images/signup.webp" alt="Sample photo" class="img-fluid"
+            <img src="./assets/images/login.png" alt="Sample photo" class="img-fluid"
                 style="height:78vh; width:100%; border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
         </div>
     </div>

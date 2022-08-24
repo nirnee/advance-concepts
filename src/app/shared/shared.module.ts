@@ -1,23 +1,34 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
-import { BlogLayoutComponent } from './components/blog-layout/blog-layout.component';
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
+import { HeaderComponent } from './components/admin/header/header.component';
+import { LeftSidebarComponent } from './components/admin/left-sidebar/left-sidebar.component';
+import { AuthLayoutComponent } from './components/auth/auth-layout/auth-layout.component';
+import { BlogLayoutComponent } from './components/blog/blog-layout/blog-layout.component';
 
 @NgModule({
   declarations: [
     AdminLayoutComponent,
     AuthLayoutComponent,
-    BlogLayoutComponent
+    BlogLayoutComponent,
+    HeaderComponent,
+    LeftSidebarComponent
   ],
   imports: [
-    CommonModule],
+    CommonModule,
+    HttpClientModule,
+    RouterModule
+  ],
   exports:[
-    FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    AdminLayoutComponent,
+    AuthLayoutComponent,
+    BlogLayoutComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }
