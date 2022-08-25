@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FaqService } from 'src/app/admin/services/faq.service';
 
 @Component({
   selector: 'app-faq-list',
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FaqListComponent implements OnInit {
 
-  constructor() { }
+  faqs: any = [];
+  constructor(
+    private faqService: FaqService
+  ) { }
 
   ngOnInit(): void {
+    this.getFaqs();
   }
 
+  getFaqs(){
+    this.faqService.getFaq().subscribe({
+      next:(response) => {
+        this.faqs = response;
+        return response;
+      },
+      error:(err) => {
+        console.log(err);
+      }
+    });
+    
+  }
 }

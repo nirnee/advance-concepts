@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BotService } from 'src/app/admin/services/bot.service';
 
 @Component({
   selector: 'app-bot-list',
@@ -7,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BotListComponent implements OnInit {
 
-  constructor() { }
+  bots: any = [];
+  constructor(
+    private botService: BotService
+  ) { }
 
   ngOnInit(): void {
-    console.log('yes')
+    this.getFaqs();
   }
 
+  getFaqs(){
+    this.botService.getBots().subscribe({
+      next:(response:any) => {
+        this.bots = response;
+        return response;
+      },
+      error:(err) => {
+        console.log(err);
+      }
+    });
+    
+  }
 }

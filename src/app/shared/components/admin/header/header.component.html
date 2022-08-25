@@ -6,47 +6,37 @@
                 <li class="nav-item"><a class="nav-link" routerLink="/user/dashboard" data-abc="true">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/about-us" data-abc="true">About Us</a></li>
                 <li class="nav-item"><a class="nav-link" routerLink="/contact-us" data-abc="true">Contact Us</a></li>
-            </ul>
-            <ul class="navbar-nav d-flex align-items-center">
                 <li class="nav-item">
-                    <div class="d-flex flex-row">
-                        <img src="./assets/images/logo.jpg" class="rounded-circle" width="30">
+                    <div class="d-flex form-inputs w-150p">
+                        <input class="form-control" type="text" placeholder="Search...">
+                        <i class="bx bx-search"></i>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a routerLink="/user-profile" class="nav-link d-flex align-items-center"
-                        data-abc="true"><span>{{user}}</span><i class='bx bxs-chevron-down'></i></a>
-                </li>
+            </ul>
+            <ul class="navbar-nav d-flex align-items-center">
+                <div class="d-flex d-none d-md-flex flex-row align-items-center text-white m-2">
+                    <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
+                    <div class="d-flex flex-column ms-2">
+                        <span class="qty">{{time | date: "hh:mm:ss a"}}</span>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="./assets/images/user.jpeg" class="rounded-circle" width="30">
+                        {{user}}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" (click)="authService.logout()">
+                                <img class="w-23" src="./assets/images/logout.png">Logout
+                            </a></li>
+                    </ul>
+                </div>
 
             </ul> <!-- list-inline //  -->
         </div> <!-- navbar-collapse .// -->
         <!-- container //  -->
     </nav> <!-- header-top-light.// -->
-
-    <section class="header-main border-bottom bg-white">
-        <div class="container-fluid">
-            <div class="row p-2 pt-3 pb-3 d-flex align-items-center">
-                <div class="col-md-2">
-                    <img class="d-none d-md-flex" src="./assets/images/logo.jpg" width="100">
-                </div>
-                <div class="col-md-8">
-                    <div class="d-flex form-inputs">
-                        <input class="form-control" type="text" placeholder="Search any bot...">
-                        <i class="bx bx-search"></i>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="d-flex d-none d-md-flex flex-row align-items-center">
-                        <span class="shop-bag"><i class='bx bxs-shopping-bag'></i></span>
-                        <div class="d-flex flex-column ms-2">
-                            <span class="qty">{{time | date: "hh:mm:ss a"}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand d-md-none d-md-flex" routerLink="#">Categories</a>

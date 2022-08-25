@@ -1,38 +1,90 @@
-body {
-    background-color: purple;
+* {
+    margin: 0px;
 }
 
-.form-inputs {
-    position: relative;
+#sidebar {
+    /*Strictly Necessary */
+    position: fixed;
+    height: 100%;
+    width: 10%;
+    margin: 0px;
+
+    /*Aesthetics*/
+    background: lightblue;
+    border-radius: 7px;
 }
 
-.form-inputs .form-control {
-    height: 45px;
+
+#rightSideWrapper {
+    /*Strictly Necessary */
+    width: 90%;
+    float: right;
+
+    /*Aesthetics*/
+    background: black;
 }
 
-.form-inputs .form-control:focus {
-    box-shadow: none;
-    border: 1px solid #000;
+header {
+    /*Strictly Necessary */
+    position: fixed;
+    width: 90%;
+    margin-left: 10%;
+    height: 44px;
+    /*Adjust the hight to your purposes*/
+
+    /*Aesthetics*/
+    background: lightSalmon;
+    border-radius: 7px;
 }
 
-.form-inputs i {
-    position: absolute;
-    right: 10px;
-    top: 15px;
-}
-
-.shop-bag {
-    background-color: #000;
-    color: #fff;
-    height: 50px;
-    width: 50px;
-    font-size: 25px;
+.ContentBox {
+    margin-top: 44px;
+    /*The height of the   header*/
     display: flex;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
+    flex-flow: row wrap;
 }
 
-.qty {
-    font-size: 12px;
+main,
+section,
+footer {
+    /*Aesthetics*/
+    background: lightgray;
+    border-radius: 7px;
+    margin: 5px;
+    padding: 20px;
+}
+
+main {
+    /*Strictly Necessary */
+    height: 400px;
+    order: 1;
+    flex: 0 1 100%;
+
+}
+
+section {
+    /*Strictly Necessary */
+    height: 400px;
+    order: 2;
+    flex: 0 1 100%;
+
+}
+
+footer {
+    /*Strictly Necessary */
+    height: 10px;
+    order: 3;
+    flex: 0 1 100%;
+    position: fixed;
+    width: 90%;
+    margin-left: 10%;
+    bottom: 0;
+}
+
+.w-150p {
+    width: 150%;
+}
+
+.w-23 {
+    width: 23px;
 }

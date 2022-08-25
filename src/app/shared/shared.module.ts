@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
+import { FooterComponent } from './components/admin/footer/footer.component';
 import { HeaderComponent } from './components/admin/header/header.component';
 import { LeftSidebarComponent } from './components/admin/left-sidebar/left-sidebar.component';
 import { AuthLayoutComponent } from './components/auth/auth-layout/auth-layout.component';
 import { BlogLayoutComponent } from './components/blog/blog-layout/blog-layout.component';
+import { DeleteComponent } from './components/delete/delete.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { BlogLayoutComponent } from './components/blog/blog-layout/blog-layout.c
     AuthLayoutComponent,
     BlogLayoutComponent,
     HeaderComponent,
-    LeftSidebarComponent
+    LeftSidebarComponent,
+    DeleteComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +32,10 @@ import { BlogLayoutComponent } from './components/blog/blog-layout/blog-layout.c
     AdminLayoutComponent,
     AuthLayoutComponent,
     BlogLayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    LeftSidebarComponent,
+    DeleteComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }
