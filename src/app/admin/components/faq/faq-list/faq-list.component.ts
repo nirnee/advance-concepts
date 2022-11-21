@@ -8,15 +8,43 @@ import { FaqService } from 'src/app/admin/services/faq.service';
 })
 export class FaqListComponent implements OnInit {
 
+  //define variables
   faqs: any = [];
+  uiConfig: any = {
+    actionItems: {
+        itemId: 'faqId'
+    },
+    tableColumns: [
+      {
+        title: 'faq Id',
+        columnName: 'faqId'
+      },
+      {
+        title: 'question',
+        columnName: 'question'
+      },
+      {
+        title: 'answer',
+        columnName: 'answer'
+      },
+      {
+        title: 'created At',
+        columnName: 'createdAt'
+      }
+    ]
+  };
+  
   constructor(
     private faqService: FaqService
-  ) { }
+  ) {
+    //comment here
+  }
 
   ngOnInit(): void {
     this.getFaqs();
   }
 
+  //get faqs list
   getFaqs(){
     this.faqService.getFaq().subscribe({
       next:(response) => {
@@ -28,5 +56,10 @@ export class FaqListComponent implements OnInit {
       }
     });
     
+  }
+
+  //delete faq
+  deleteEventHandler(id: any){
+    alert("faq "+ id);
   }
 }

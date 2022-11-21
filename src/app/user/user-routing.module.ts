@@ -7,49 +7,53 @@ import { UpdateCommentsComponent } from './comments/update-comments/update-comme
 import { CreatePostComponent } from './posts/create/create.component';
 import { PostsComponent } from './posts/posts.component';
 import { UpdatePostsComponent } from './posts/update-posts/update-posts.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
-  
   {
-    path:'posts/update/:id',
-    component: UpdatePostsComponent
+    path: 'posts/update/:id',
+    component: UpdatePostsComponent,
   },
   {
-    path:'posts/delete/:postId',
-    component: DeleteComponent
+    path: 'posts/delete/:postId',
+    component: DeleteComponent,
   },
   {
-    path:'comments/delete/:postId/:commentId',
-    component: DeleteComponent
+    path: 'comments/delete/:postId/:commentId',
+    component: DeleteComponent,
   },
   {
-    path:'posts/create',
-    component: CreatePostComponent
+    path: 'posts/create',
+    component: CreatePostComponent,
   },
   {
-    path:'posts',
-    component: PostsComponent
+    path: 'posts',
+    component: PostsComponent,
   },
   {
-    path:'comments/:postId',
-    component: CommentsComponent
+    path: 'comments/:postId',
+    component: CommentsComponent,
   },
   {
-    path:'comments/:postId/create',
-    component: CreateCommentsComponent
+    path: 'comments/:postId/create',
+    component: CreateCommentsComponent,
   },
   {
-    path:'comments/update/:postId/:commentId',
-    component: UpdateCommentsComponent
+    path: 'comments/update/:postId/:commentId',
+    component: UpdateCommentsComponent,
   },
   {
-    path:'**',
-    component: PostsComponent
-  }
+    path: 'test',
+    component: TestComponent,
+  },
+  {
+    path: '**',
+    component: PostsComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class UserRoutingModule { }
+export class UserRoutingModule {}

@@ -3,57 +3,61 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import employees from '../../configs/data.json';
 
+//render delete component
 @Component({
   selector: 'app-delete',
   templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.scss']
+  styleUrls: ['./delete.component.scss'],
 })
 export class DeleteComponent implements OnInit {
-
-  constructor(
-      private router: Router,
-      private route: ActivatedRoute,
-      private _location: Location
-    ) {
-    //comment here
-   }
-
+  //define variables
   routeSub: any;
   empId: any;
   commentId: any;
   title: string = '';
-  
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private _location: Location
+  ) {
+    //comment here
+  }
+
   ngOnInit(): void {
-     this.routeSub = this.route.params.subscribe(params => {
-      console.log(params)
+    this.routeSub = this.route.params.subscribe((params) => {
       this.empId = parseInt(params['postId'].substring(1));
       this.commentId = parseInt(params['commentId']?.substring(1));
     });
-    this.title = this.commentId? 'comment' : 'post';
+    this.title = this.commentId ? 'comment' : 'post';
   }
 
-  //goBack function
-  goBack(){
+  /**
+   * goBack function
+   */
+  goBack() {
     this._location.back();
   }
 
-  //delete function
-  delete(){
-    if(!this.commentId) {
+  /**
+   * delete function
+   * */
+  delete() {
+    if (!this.commentId) {
       let result = [employees.employees][0];
-      let arr = result.filter((post:any)=>post.id!=this.empId);
+      let arr = result.filter((post: any) => post.id != this.empId);
       employees.employees = JSON.parse(JSON.stringify(arr));
       this.router.navigateByUrl('/user/posts');
     } else {
-      let arr:any = [];
-      employees.employees.map((post:any)=>{
-        if(post.id == this.empId) {
-         let result = [post.comments][0];
-         arr = result.filter((post:any)=>post.comId!=this.commentId);
-         post.comments = arr;
+      let arr: any = [];
+      employees.employees.map((post: any) => {
+        if (post.id == this.empId) {
+          let result = [post.comments][0];
+          arr = result.filter((post: any) => post.comId != this.commentId);
+          post.comments = arr;
         }
       });
-      this.router.navigateByUrl('/user/comments/:'+this.empId);
+      this.router.navigateByUrl('/user/comments/:' + this.empId);
     }
   }
 }

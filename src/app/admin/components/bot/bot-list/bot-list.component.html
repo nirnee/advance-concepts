@@ -1,43 +1,13 @@
-<admin-layout></admin-layout>
+<!-- <app-admin-left-sidebar></app-admin-left-sidebar>
 <div id="rightSideWrapper">
+    <app-admin-header></app-admin-header>
     <div class="ContentBox">
-        <main>
-            <h2 class="text-center mt-8">FAQs</h2>
-            <table class="table align-middle mb-0 bg-white">
-                <thead class="bg-light">
-                    <tr>
-                        <th>Bot Id</th>
-                        <th>Question</th>
-                        <th>Answer</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let bot of bots">
-                        <tr>
-                            <td>
-                                <p class="fw-normal mb-1">{{bot.botId}}</p>
-                            </td>
-                            <td>
-                                <p class="fw-normal mb-1">{{bot.createdAt | date: "MM/dd/yyyy"}}</p>
-                            </td>
-                            <td>
-                                <span>{{bot.name}}</span>
-                            </td>
-
-                            <td>
-                                <button type="button" matTooltip="Edit Post" class="btn btn-link btn-sm btn-rounded">
-                                    <img src="./assets/images/edit-img.png" class="w-30">
-                                </button>
-                                <button type="button" matTooltip="Delete" class="btn btn-link btn-sm btn-rounded">
-                                    <img src="./assets/images/delete-icon.png" class="w-30">
-                                </button>
-                            </td>
-                        </tr>
-                    </ng-container>
-                </tbody>
-            </table>
-        </main>
-    </div>
-
-</div>
+        <main> -->
+<ng-container *ngIf="bots.length>0 else loader">
+    <app-admin-layout [tableData]="bots" [uiConfig]="uiConfig" (deleteEvent)="deleteEventHandler($event)">
+        <h2 class="text-center mt-8">BOTs</h2>
+    </app-admin-layout>
+</ng-container>
+<ng-template #loader>
+    Please wait content is loading...
+</ng-template>

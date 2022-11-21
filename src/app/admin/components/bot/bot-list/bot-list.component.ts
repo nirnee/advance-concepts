@@ -8,16 +8,39 @@ import { BotService } from 'src/app/admin/services/bot.service';
 })
 export class BotListComponent implements OnInit {
 
+  //define variables
   bots: any = [];
+  uiConfig : any = {
+    actionItems: {
+        itemId: 'botId'
+    },
+    tableColumns: [
+      {
+        title:'bot Ids',
+        columnName: 'botId'
+      },
+      {
+        title:'name',
+        columnName: 'name'
+      },
+      {
+        title:'created At',
+        columnName: 'createdAt'
+      }
+    ]
+  };
   constructor(
     private botService: BotService
-  ) { }
-
-  ngOnInit(): void {
-    this.getFaqs();
+  ) {
+  //comment here
   }
 
-  getFaqs(){
+  ngOnInit(): void {
+    this.getBots();
+  }
+
+  //get bots list
+  getBots(){
     this.botService.getBots().subscribe({
       next:(response:any) => {
         this.bots = response;
@@ -26,7 +49,11 @@ export class BotListComponent implements OnInit {
       error:(err) => {
         console.log(err);
       }
-    });
-    
+    });    
+  }
+
+  //deleet bot
+  deleteEventHandler(id: any){
+    alert("bot "+ id);
   }
 }

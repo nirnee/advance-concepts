@@ -3,16 +3,17 @@ import { Injectable } from '@angular/core';
 import apis, { header } from 'src/app/shared/configs/apis';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BotService {
+  constructor(private http: HttpClient) {
+    //comment here
+  }
 
-  constructor(
-    private http: HttpClient
-  ) { }
-  getBots(){
-      return this.http.get(apis.admin.bots, {
-            headers:header
-        });
+  //returns getBots api
+  getBots() {
+    return this.http.get(apis.admin.bots, {
+      headers: header,
+    });
   }
 }

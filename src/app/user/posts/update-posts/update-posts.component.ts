@@ -23,7 +23,7 @@ export class UpdatePostsComponent implements OnInit {
     email: new FormControl(''),
     title: new FormControl(''),
     content: new FormControl(''),
-    author: new FormControl('', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(6)]))
+    author: new FormControl('', ([Validators.required, Validators.minLength(2), Validators.maxLength(6)]))
   });
 
   routeSub: any;

@@ -21,6 +21,39 @@
                     </div>
                 </div>
                 <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Use Language {{'login.button.en' |
+                        translate}}
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                        <li><a class="dropdown-item">
+                                <button type="button" class="btn btn-primary" (click)="useLanguage('ta')">
+                                    {{'login.button.ta' |
+                                    translate}}
+                                </button>
+                            </a></li>
+                        <li><a class="dropdown-item">
+                                <button type="button" class="btn btn-primary" (click)="useLanguage('fr')">
+                                    {{'login.button.fr' |
+                                    translate}}
+                                </button>
+                            </a></li>
+                        <li><a class="dropdown-item">
+                                <button type="button" class="btn btn-primary" (click)="useLanguage('zh')">
+                                    {{'login.button.zh' |
+                                    translate}}
+                                </button>
+                            </a></li>
+                        <li><a class="dropdown-item">
+                                <button type="button" class="btn btn-primary" (click)="useLanguage('en')">
+                                    {{'login.button.en' |
+                                    translate}}
+                                </button>
+                            </a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="./assets/images/user.jpeg" class="rounded-circle" width="30">
@@ -37,6 +70,7 @@
         </div> <!-- navbar-collapse .// -->
         <!-- container //  -->
     </nav> <!-- header-top-light.// -->
+    <button disabled="!isEnable">Save</button>
     <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand d-md-none d-md-flex" routerLink="#">Categories</a>
@@ -53,7 +87,7 @@
                         <a class="nav-link" routerLink="#">Fashion</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLink="#">Furnitures</a>
+                        <a class="nav-link" routerLink="#">Furniture</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdownMenuLink" role="button"

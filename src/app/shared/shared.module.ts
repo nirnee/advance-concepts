@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AdminLayoutComponent } from './components/admin/admin-layout/admin-layout.component';
 import { FooterComponent } from './components/admin/footer/footer.component';
 import { HeaderComponent } from './components/admin/header/header.component';
@@ -11,6 +12,11 @@ import { AuthLayoutComponent } from './components/auth/auth-layout/auth-layout.c
 import { BlogLayoutComponent } from './components/blog/blog-layout/blog-layout.component';
 import { DeleteComponent } from './components/delete/delete.component';
 
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AdminLayoutComponent,
@@ -24,7 +30,14 @@ import { DeleteComponent } from './components/delete/delete.component';
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports:[
     ReactiveFormsModule,

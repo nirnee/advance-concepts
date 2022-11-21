@@ -9,8 +9,12 @@ export class FaqService {
 
   constructor(
     private http: HttpClient
-  ) { }
-   getFaq(){   
+  ) {
+    //comment here
+  }
+
+  //returns getFaqs api
+  getFaq(){   
         return this.http.get(apis.admin.faq, {
             headers:header
         });
